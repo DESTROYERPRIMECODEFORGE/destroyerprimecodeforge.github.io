@@ -33,10 +33,17 @@
 
 /* ===== CONFIGURACIÓN DEL DOCUMENTO ===== */
 
-html,
+html {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: clip;
+    overscroll-behavior-y: none;
+}
+
 body {
     width: 100%;
     min-height: 100%;
     margin: 0;
-    padding: 0;
+    background-color: #050202;
+    overscroll-behavior-y: none;
 }

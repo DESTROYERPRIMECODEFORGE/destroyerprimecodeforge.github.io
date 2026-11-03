@@ -277,13 +277,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!logoToggle || !navigation || !overlay) return;
 
-    const mobileQuery = window.matchMedia("(max-width: 900px)");
+    const mobileQuery = window.matchMedia("(max-width: 1199px)");
+
+    let savedScrollY = 0;
 
     function setMenuOpen(open) {
+
         navigation.classList.toggle("is-open", open);
         overlay.classList.toggle("is-visible", open);
 
         logoToggle.setAttribute("aria-expanded", String(open));
+
         logoToggle.setAttribute(
             "aria-label",
             open ? "Cerrar menú de navegación" : "Abrir menú de navegación"
@@ -291,10 +295,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
         overlay.setAttribute("aria-hidden", String(!open));
 
-        document.body.style.overflow =
-            open && mobileQuery.matches ? "hidden" : "";
-    }
+        if (open && mobileQuery.matches) {
 
+            savedScrollY = window.scrollY;
+
+            document.body.style.position = "fixed";
+            document.body.style.top = `-${savedScrollY}px`;
+            document.body.style.left = "0";
+            document.body.style.right = "0";
+            document.body.style.width = "100%";
+
+        } else {
+
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.left = "";
+            document.body.style.right = "";
+            document.body.style.width = "";
+
+            window.scrollTo(0, savedScrollY);
+        }
+    }
     // Pulsar el logo abre o cierra el panel en móvil.
     logoToggle.addEventListener("click", (event) => {
         if (!mobileQuery.matches) return;
