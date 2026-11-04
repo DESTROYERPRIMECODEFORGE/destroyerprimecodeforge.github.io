@@ -73,7 +73,9 @@
     }
 
     gsap.registerPlugin(ScrollTrigger);
-
+    ScrollTrigger.config({
+        ignoreMobileResize: true
+    });
     // Acceder a los elementos de Sobre mí
     const label = aboutSection.querySelector(".about-label");
     const titleWhite = aboutSection.querySelector(".about-title-white");
