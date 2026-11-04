@@ -50,3 +50,23 @@ body {
     overscroll-behavior-y: none;
     overflow-anchor: none;
 }
+
+/* =========================================
+   ESTABILIZACIÓN DEL VIEWPORT MÓVIL
+========================================= */
+
+@media (max-width: 450px) {
+
+    html,
+    body {
+        min-height: 100%;
+        overflow-anchor: none;
+        overscroll-behavior-y: none;
+    }
+
+    main {
+        width: 100%;
+        min-height: 100%;
+    }
+
+}
