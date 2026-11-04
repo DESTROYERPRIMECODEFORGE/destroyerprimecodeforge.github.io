@@ -39,6 +39,7 @@ html {
     overflow-x: clip;
     overscroll-behavior-y: none;
     background-color: #050202;
+    overflow-anchor: none;
 }
 
 body {
@@ -47,4 +48,5 @@ body {
     margin: 0;
     background-color: #050202;
     overscroll-behavior-y: none;
+    overflow-anchor: none;
 }
